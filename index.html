@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="줄과 관의 정상파를 직접 관찰하는 고등학교 물리학 실험실">
+  <title>정상파 실험실</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23216759'/%3E%3Cpath d='M5 20 Q12 2 20 20 T35 20' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css"><script defer src="app.js"></script>
+</head>
+<body>
+<main>
+  <header><div class="eyebrow"><span class="brand">∿</span> 물리학 · 파동과 소리</div><h1>정상파 실험실<span>Standing Waves</span></h1><p>움직이는 파동 속에서, 움직이지 않는 지점을 찾아보세요.</p></header>
+  <nav class="tabs" role="tablist" aria-label="실험 선택">
+    <button id="tab-string" role="tab" aria-selected="true" aria-controls="experiment" data-kind="string">01 <span>줄의 정상파</span></button>
+    <button id="tab-open" role="tab" aria-selected="false" aria-controls="experiment" data-kind="open" tabindex="-1">02 <span>양쪽 끝이 열린 관</span></button>
+    <button id="tab-closed" role="tab" aria-selected="false" aria-controls="experiment" data-kind="closed" tabindex="-1">03 <span>한쪽 끝이 닫힌 관</span></button>
+  </nav>
+  <section id="experiment" role="tabpanel" aria-labelledby="tab-string">
+    <div class="panel-heading"><div><div class="eyebrow">관찰하기</div><h2 id="experiment-title">양 끝이 고정된 줄</h2></div><span class="badge" id="boundary">양 끝 = 마디</span></div>
+    <div class="modes" role="group" aria-label="진동 모드 선택"></div>
+    <div id="pipe-views" class="pipe-views" role="group" aria-label="관의 정상파 표현 방식" hidden>
+      <button data-view="particles" aria-pressed="true">① 공기 입자 보기(종파)</button>
+      <button data-view="waveform" aria-pressed="false">② 파형으로 보기</button>
+    </div>
+    <p id="model-note" class="model-note">줄의 각 지점은 위아래로 진동합니다. 마디의 위치는 변하지 않습니다.</p>
+    <div class="visual"><canvas id="wave" role="img" aria-label="양 끝이 고정된 줄의 정상파 애니메이션"></canvas></div>
+    <p id="waveform-note" class="waveform-note" hidden>소리는 종파입니다. 이 사인 곡선은 소리가 실제로 위아래로 진동한다는 뜻이 아니라, 위치에 따른 공기 입자의 변위를 알아보기 쉽게 나타낸 것입니다.</p>
+    <div class="legend"><span><i class="node"></i>마디 · 변위가 항상 0</span><span><i class="antinode"></i>배 · 진폭이 최대</span><span id="envelope-legend">┄ 옅은 선 · 최대 변위</span></div>
+    <div class="controls">
+      <div class="playback"><button id="play" class="primary">Ⅱ 일시정지</button><label for="speed">재생 속도</label><select id="speed"><option value="0.25">0.25배</option><option value="0.5">0.5배</option><option value="1" selected>1배</option></select></div>
+      <div class="display-controls"><button id="markers" class="toggle" aria-pressed="true">마디·배 표시 <b>ON</b></button><button id="formulas" class="toggle" aria-pressed="true">수식 표시 <b>ON</b></button><button id="reset" class="reset">↺ 초기화</button></div>
+    </div>
+    <p class="timing-note">관찰을 위해 진동을 느리게 표현합니다. 같은 관 또는 줄에서 배진동의 상대 진동수는 유지됩니다.</p>
+  </section>
+  <section id="formula-panel" class="formula-panel" aria-label="선택한 진동의 관계식" aria-live="polite">
+    <div><span class="small-label">길이와 파장</span><strong id="length-formula"></strong><small id="wavelength"></small></div>
+    <div><span class="small-label">진동수</span><strong id="frequency"></strong><small id="frequency-rule"></small></div>
+    <div class="equation"><span class="small-label">변위 정상파 식</span><strong id="equation"></strong><small>L: 길이 · A: 최대 진폭 · x: 평형 위치 · ω₁ = 2πf₁</small></div>
+  </section>
+  <aside class="insight"><span class="question-mark">?</span><div><h3 id="question"></h3><p id="hint"></p></div></aside>
+  <footer>정상파 실험실 <span>고등학교 물리학 · 이상적인 줄과 관의 모형</span></footer>
+</main>
+</body>
+</html>
